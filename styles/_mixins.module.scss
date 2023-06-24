@@ -1,0 +1,41 @@
+@mixin input-style {
+    width: 17rem;
+    height: 2.6rem;
+    background-color: white;
+    border: none;
+    outline: none;
+    font-size: 0.89rem;
+    padding: 0 12px 0 12px;
+    font-weight: 400;
+    border-radius: 0px  3px;
+    -webkit-box-shadow: 0.1px 0.5px 2.5px 1.2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0.1px 0.5px 2.5px 1.2px rgba(0, 0, 0, 0.1);
+}
+
+@mixin input-focused {
+    border: black 1px solid;
+}
+
+@mixin input-label {
+    font-weight: 500;
+    font-size: 0.97rem;
+}
+
+@mixin button-style {
+    align-self: flex-end;
+    font-family: $secondary-font;
+    width: fit-content;
+    padding: 1rem 1.5rem;
+    border-radius: 0 6px;
+    border: none;
+    background-color: $primary-color;
+    color: $white-color;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+@mixin button-hover {
+    background-color: $secondary-color;
+    transition: 0.15s;
+}

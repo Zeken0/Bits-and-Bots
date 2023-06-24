@@ -1,9 +1,38 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.scss";
-
-import Image from "next/image";
+import { Tabs } from "@mantine/core";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+("bootstrap/dist/css/bootstrap.min.css");
 
 export default function LandingPage() {
+  const {
+    handleSubmit,
+    handleChange,
+    values,
+    touched,
+    errors,
+    handleBlur,
+    resetForm,
+  } = useFormik({
+    initialValues: {
+      login_email: "",
+      login_password: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().required("Email required").email("Invalid email"),
+
+      password: Yup.string()
+        .max(9, "Password must be shorter than 30 characters")
+        .min(3, "Password must be higher than 3 characters")
+        .required("Password required"),
+    }),
+    onSubmit: () => {
+      resetForm();
+      alert("Login succsessful, rederecting to the browse page");
+    },
+  });
+
   return (
     <>
       <Head>
@@ -13,8 +42,74 @@ export default function LandingPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main_landingPage}>
-        -----------------------------------------------
-        <video src={"/public/videos/background.mp4"} />
+        <div className={styles.overlay}></div>
+
+        <h1>Welcome To Bits & bots</h1>
+
+        <Tabs color="orange" radius="xs" defaultValue="login">
+          <Tabs.List grow>
+            <Tabs.Tab value="login">Login</Tabs.Tab>
+            <Tabs.Tab value="register">Register</Tabs.Tab>
+          </Tabs.List>
+
+          <Tabs.Panel value="login" pt="lg">
+            <form class={styles.loginForm}>
+              <div>
+                <label for="login_email">Email address</label>
+                <input
+                  type="email"
+                  id="login_email"
+                  placeholder="admin@admin.com"
+                  value={values.login_email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {touched.login_email && errors.login_email ? (
+                  <div className="text-danger">{errors.login_email}</div>
+                ) : null}
+              </div>
+              <div>
+                <label for="login_password">Password</label>
+                <input
+                  type="password"
+                  id="login_password"
+                  placeholder="Pass1234"
+                  value={values.login_password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {touched.login_password && errors.login_password ? (
+                  <div className="text-danger">{errors.login_password}</div>
+                ) : null}
+              </div>
+              <button type="submit" onSubmit={handleSubmit}>
+                Login
+              </button>
+            </form>
+          </Tabs.Panel>
+
+          <Tabs.Panel value="register" pt="lg">
+            <form class={styles.registerForm}>
+              <div>
+                <label for="register_email">Email address</label>
+                <input
+                  type="email"
+                  id="register_email"
+                  placeholder="admin@admin.com"
+                />
+              </div>
+              <div>
+                <label for="register_password">Password</label>
+                <input
+                  type="password"
+                  id="register_password"
+                  placeholder="Pass1234"
+                />
+              </div>
+              <button type="submit">Register</button>
+            </form>
+          </Tabs.Panel>
+        </Tabs>
       </main>
     </>
   );

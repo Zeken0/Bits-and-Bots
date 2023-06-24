@@ -2,14 +2,88 @@
 @import "_mixins.module.scss";
 
 .main_landingPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   width: 100%;
+  z-index: $base-index;
+  position: relative;
 
-  .video {   
-    object-fit: cover;   
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: $low-index; 
-}
+  // .overlay {
+  //   position: absolute;
+  //   height: 100%;
+  //   width: 100%;
+  //   background-color: rgba(0, 0, 0, 0.85);
+  //   z-index: $high-index !important;
+  // }
+
+  .loginForm {
+    width: 17.2rem;
+    display: flex;
+  
+    flex-direction: column;
+    row-gap: 1.5rem;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.5rem;
+
+      input {
+        @include input-style;
+      }
+
+      input:focus {
+        @include input-focused;
+      }
+
+      label {
+        @include input-label;
+      }
+    }
+
+    button {
+      @include button-style;
+    }
+
+    button:hover {
+      @include button-hover;
+    }
+  }
+
+  .registerForm {
+    width: 17.2rem;
+    display: flex;
+  
+    flex-direction: column;
+    row-gap: 1.5rem;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.5rem;
+
+      input {
+        @include input-style;
+      }
+
+      input:focus {
+        @include input-focused;
+      }
+
+      label {
+        @include input-label;
+      }
+    }
+
+    button {
+      @include button-style;
+    }
+
+    button:hover {
+      @include button-hover
+    }
+  }
 }
