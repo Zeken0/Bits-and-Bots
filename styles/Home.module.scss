@@ -19,6 +19,12 @@
   //   z-index: $high-index !important;
   // }
 
+  .text_danger {
+    color: red;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
   .loginForm {
     width: 17.2rem;
     display: flex;

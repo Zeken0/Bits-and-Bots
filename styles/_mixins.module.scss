@@ -13,7 +13,7 @@
 }
 
 @mixin input-focused {
-    border: black 1px solid;
+    border: $black-color 1px solid;
 }
 
 @mixin input-label {
