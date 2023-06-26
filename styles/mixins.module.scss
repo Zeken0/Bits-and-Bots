@@ -22,11 +22,10 @@
 }
 
 @mixin button-style {
-    align-self: flex-end;
     font-family: $secondary-font;
     width: fit-content;
     padding: 1rem 1.5rem;
-    border-radius: 0 6px;
+    border-radius: 6px 0;
     border: none;
     background-color: $primary-color;
     color: $white-color;
@@ -37,5 +36,5 @@
 
 @mixin button-hover {
     background-color: $secondary-color;
-    transition: 0.15s;
+    transition: 0.2s;
 }

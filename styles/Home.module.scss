@@ -1,5 +1,7 @@
-@import "_variabels.module.scss";
-@import "_mixins.module.scss";
+@import "variabels.module.scss";
+@import "mixins.module.scss";
+@import "layout.module.scss";
+@import "browse.module.scss";
 
 .main_landingPage {
   display: flex;
@@ -52,6 +54,7 @@
 
     button {
       @include button-style;
+      align-self: flex-end;
     }
 
     button:hover {
@@ -86,6 +89,7 @@
 
     button {
       @include button-style;
+      align-self: flex-end;
     }
 
     button:hover {

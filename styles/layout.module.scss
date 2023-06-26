@@ -1,0 +1,106 @@
+.nav_container {
+    z-index: $base-index;
+    display:  flex;
+    align-items: center;
+    height: 65px;
+    width: 100%;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+
+    .nav_content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 95%;
+        margin: auto;
+    }
+    
+    .nav_logo {
+        cursor: pointer;
+        height: fit-content;
+    }
+
+    .nav_actions {
+        font-family: $secondary-font;
+        display: flex;
+        align-items: center;
+        column-gap: 1.2rem;
+        list-style: none;
+        font-size: 1.13rem;
+        font-weight: 600;
+        margin: unset;
+        letter-spacing: 0.5px;
+
+        li {
+            cursor: pointer;
+
+            .nav_actions_styling {
+                color: $secondary-color;
+            }
+        }
+        
+        li:hover {
+            color: $primary-color;
+            transition: 0.2s
+        }
+
+        .nav_actions_button {
+            @include button_style;
+            padding: 0.75rem 1.3rem;
+            border-radius: 6px 0;
+        }
+
+        .nav_actions_button:hover {
+            @include button_hover;
+        }
+
+    }
+    .nav_burger {
+        display: none;
+        z-index: 100;
+    }
+
+    .nav_drawer {
+        z-index: $base-index;
+        display: none;
+    }
+}
+
+/* ----------------------------------------------------- Tablet -------------------------------------------- */
+@media (max-width: 1112px) {
+
+}
+
+/* ----------------------------------------------------- Mobile -------------------------------------------- */
+@media (max-width: 767px) { 
+
+    .nav_actions_mobile {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1.5rem;
+        list-style: none;
+        font-size: 1.5rem;
+        font-weight: 600;
+
+        li {
+            cursor: pointer;
+            
+            .nav_actions_styling {
+                color: $secondary-color;
+            }
+        }
+        
+        .nav_actions_button {
+            @include button_style;
+            font-size: 1.15rem;
+            padding: 1rem 1.25rem;
+        }
+    }
+
+    .nav_actions {
+        display: none !important;
+    }
+
+    .nav_burger {
+        display: unset !important;
+    }
+}

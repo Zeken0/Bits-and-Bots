@@ -44,7 +44,7 @@ export default function LandingPage() {
   return (
     <>
       <Head>
-        <title>Bits & Bots</title>
+        <title>Home | Bits & Bots</title>
         <meta
           name="description"
           content="This is the landing page for the Bits & bots online game store"
