@@ -1,8 +1,11 @@
 import styles from "@/styles/Home.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useRouter } from "next/router";
 
 export default function LoginTab() {
+  const router = useRouter();
+
   const {
     handleSubmit,
     handleChange,
@@ -26,10 +29,19 @@ export default function LoginTab() {
         .min(3, "Password must be higher than 3 characters")
         .required("Password required"),
     }),
-    onSubmit: () => {
-      console.log("localStorage:", JSON.parse(localStorage.user));
-      alert("Login successful, Rederacting to the browse page!");
-      //   resetForm();
+    onSubmit: (values) => {
+      let localStorageData = JSON.parse(localStorage.getItem("user"));
+
+      if (
+        values.login_email === localStorageData.email &&
+        values.login_password === localStorageData.password
+      ) {
+        router.push("/Browse");
+        alert("Login successful, Rederacting to the browse page!");
+        resetForm();
+      } else {
+        alert("Incorrect username or password");
+      }
     },
   });
 
@@ -41,7 +53,7 @@ export default function LoginTab() {
           <input
             type="email"
             id="login_email"
-            placeholder="admin@admin.com"
+            placeholder="test@hotmail.com"
             value={values.login_email}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -52,9 +64,19 @@ export default function LoginTab() {
         </div>
         <div>
           <label htmlFor="login_password">Password</label>
-          <input type="password" id="login_password" placeholder="Pass1234" />
+          <input
+            type="password"
+            id="login_password"
+            placeholder="password"
+            value={values.login_password}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          {touched.login_password && errors.login_password ? (
+            <div className={styles.text_danger}>{errors.login_password}</div>
+          ) : null}
         </div>
-        <button>Login</button>
+        <button type="submitt">Login</button>
       </form>
     </>
   );

@@ -31,15 +31,14 @@ export default function LandingPage() {
     }),
     onSubmit: () => {
       localStorage.setItem("user", JSON.stringify(userData));
-      console.log("localStorage:", JSON.parse(localStorage.user));
       alert("Registeration successful");
       resetForm();
     },
   });
 
   let userData = {
-    Email: values.register_email,
-    Password: values.register_password,
+    email: values.register_email,
+    password: values.register_password,
   };
 
   return (
@@ -75,7 +74,7 @@ export default function LandingPage() {
                 <input
                   type="email"
                   id="register_email"
-                  placeholder="admin@admin.com"
+                  placeholder="test@hotmail.com"
                   value={values.register_email}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -91,7 +90,7 @@ export default function LandingPage() {
                 <input
                   type="password"
                   id="register_password"
-                  placeholder="Pass1234"
+                  placeholder="password"
                   value={values.register_password}
                   onChange={handleChange}
                   onBlur={handleBlur}
