@@ -4,6 +4,7 @@ import Image from "next/image";
 import Navbar from "@/components/NavBar";
 import styles from "/styles/Home.module.scss";
 import axios from "axios";
+import { GridLoader } from "react-spinners";
 
 export async function getStaticProps() {
   const response = await axios.get("http://127.0.0.1:1337/api/bits-and-botss");
@@ -15,7 +16,7 @@ export async function getStaticProps() {
 }
 
 export default function Browse({ games }) {
-  console.log(games[3].attributes.Title);
+  console.log(games);
   return (
     <>
       <Head>
@@ -38,17 +39,25 @@ export default function Browse({ games }) {
           <div className={styles.browse_content}>
             <div className={styles.browse_filters}>filters</div>
             <div className={styles.browse_games}>
-              {games.map((game) => {
-                <div>
-                  <Image
-                    src={game.attributes.image_url}
-                    height={100}
-                    width={100}
-                    alt="image of a game"
-                  />
-                  <h2>{game.attributes.Title}</h2>
-                </div>;
-              })}
+              {!games ? (
+                <div className={styles.loader}>
+                  <GridLoader color="#E5560E" size={20} />
+                </div>
+              ) : (
+                games.map((game) => {
+                  return (
+                    <div className={styles.game_container} key={game.id}>
+                      <Image
+                        src={game.attributes.image_url}
+                        height={200}
+                        width={140}
+                        alt="image of a game"
+                      />
+                      <h2>{game.attributes.Title}</h2>
+                    </div>
+                  );
+                })
+              )}
             </div>
           </div>
         </main>
