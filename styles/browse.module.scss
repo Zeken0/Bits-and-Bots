@@ -9,6 +9,7 @@
         height: 100%;
         width: 95%;
         margin: auto;
+        row-gap: 1rem;
 
         .browse_actions {
             display: flex;
@@ -31,32 +32,61 @@
         }
 
         .browse_content {
-            display: flex;
-            column-gap: 3rem;
-            padding: 1rem 0;
-            display: flex;
-            justify-content: space-evenly;
-            background-color: white;
+            
+            .games_filters {
 
-            .browse_filters {
-                height: 100%;
-                width: 30%;
-                box-shadow: 0.1px 0.5px 2.5px 1.2px rgba(0, 0, 0, 0.1);
-            }
-
-            .browse_games {
                 display: flex;
-                flex-direction: column;
-                row-gap: 1rem;
-                column-gap: 3rem;
+                flex-wrap: wrap;
+                row-gap: 2rem;
+                column-gap: 2rem;
                 min-height: 100%;
-                width: 100%; 
+                width: 100% !important; 
 
                 .game_container {
+                    width: 29.1rem;
                     display: flex;
                     column-gap: 1rem;
                     padding: 1rem;
-                    box-shadow: 0.1px 1.5px 2.5px 1.2px rgba(0, 0, 0, 0.1);
+                    box-shadow: 2.1px 2.5px 8.5px 1.2px rgba(0, 0, 0, 0.1);
+
+                    .game_info {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+
+                        h2 {
+                            padding: 0;
+                            margin: 0;
+                        }
+
+                        .game_actions {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            span {
+                                font-weight: 500;
+                                font-style:  italic;
+                                align-self: flex-end;
+                                
+                            }
+
+                            span:hover {
+                                text-decoration: underline
+                            }
+
+                            button {
+                                @include button-style;
+                            }
+
+                            button:hover {
+                                @include button-hover;
+                            }
+                        }
+                    }
+
                 }
 
                 .loader {
@@ -67,6 +97,7 @@
                     width: 100%;
                 }
             }
+            
         }
     }
 }
