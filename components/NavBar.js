@@ -23,7 +23,7 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="">
+            <Link href="/cart">
               <span className={styles.nav_actions_styling}>C</span>art
             </Link>
           </li>

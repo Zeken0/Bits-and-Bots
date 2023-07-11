@@ -7,6 +7,7 @@ import axios from "axios";
 import { GridLoader } from "react-spinners";
 import { Tabs } from "@mantine/core";
 import Footer from "@/components/Footer";
+import { useEffect, useState } from "react";
 
 export async function getStaticProps() {
   const response = await axios.get("http://127.0.0.1:1337/api/bits-and-botss");
@@ -17,8 +18,17 @@ export async function getStaticProps() {
   };
 }
 
+// const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
+
 export default function Browse({ games }) {
-  console.log(games);
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  });
+
   return (
     <>
       <Head>
@@ -36,7 +46,9 @@ export default function Browse({ games }) {
         <main>
           <div className={styles.browse_actions}>
             <h1>Browse our games</h1>
-            <button>View Cart</button>
+            <Link href={"/cart/"}>
+              <button>View Cart</button>
+            </Link>
           </div>
           <div className={styles.browse_content}>
             <Tabs color="orange" radius="xs" defaultValue="all">
@@ -74,7 +86,21 @@ export default function Browse({ games }) {
                               <Link href={"/Browse/" + game.id}>
                                 <span>Details</span>
                               </Link>
-                              <button>Add To Cart</button>
+                              <button
+                                onClick={() => {
+                                  setCart(() => {
+                                    if (typeof window !== "undefined") {
+                                      localStorage.setItem("cart", [
+                                        game.attributes.Title,
+                                        game.attributes.image_url,
+                                        game.attributes.Price,
+                                      ]);
+                                    }
+                                  });
+                                }}
+                              >
+                                Add To Cart
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -84,11 +110,153 @@ export default function Browse({ games }) {
                 </div>
               </Tabs.Panel>
               <Tabs.Panel value="rpg" pt="lg">
-                ewf
+                <div className={styles.games_filters}>
+                  {!games ? (
+                    <div className={styles.loader}>
+                      <GridLoader color="#E5560E" size={20} />
+                    </div>
+                  ) : (
+                    games.map((game) => {
+                      if (game.attributes.Genre === "RPG") {
+                        return (
+                          <div className={styles.game_container} key={game.id}>
+                            <Link href={"/Browse/" + game.id}>
+                              <Image
+                                src={game.attributes.image_url}
+                                height={200}
+                                width={140}
+                                alt="image of a game"
+                              />
+                            </Link>
+                            <div className={styles.game_info}>
+                              <Link href={"/Browse/" + game.id}>
+                                <h2>{game.attributes.Title}</h2>
+                              </Link>
+                              <div className={styles.game_actions}>
+                                <Link href={"/Browse/" + game.id}>
+                                  <span>Details</span>
+                                </Link>
+                                <button>Add To Cart</button>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      }
+                    })
+                  )}
+                </div>
               </Tabs.Panel>
-              <Tabs.Panel value="action" pt="lg"></Tabs.Panel>
-              <Tabs.Panel value="shooter" pt="lg"></Tabs.Panel>
-              <Tabs.Panel value="racing" pt="lg"></Tabs.Panel>
+              <Tabs.Panel value="action" pt="lg">
+                <div className={styles.games_filters}>
+                  {!games ? (
+                    <div className={styles.loader}>
+                      <GridLoader color="#E5560E" size={20} />
+                    </div>
+                  ) : (
+                    games.map((game) => {
+                      if (game.attributes.Genre === "Action") {
+                        return (
+                          <div className={styles.game_container} key={game.id}>
+                            <Link href={"/Browse/" + game.id}>
+                              <Image
+                                src={game.attributes.image_url}
+                                height={200}
+                                width={140}
+                                alt="image of a game"
+                              />
+                            </Link>
+                            <div className={styles.game_info}>
+                              <Link href={"/Browse/" + game.id}>
+                                <h2>{game.attributes.Title}</h2>
+                              </Link>
+                              <div className={styles.game_actions}>
+                                <Link href={"/Browse/" + game.id}>
+                                  <span>Details</span>
+                                </Link>
+                                <button>Add To Cart</button>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      }
+                    })
+                  )}
+                </div>
+              </Tabs.Panel>
+              <Tabs.Panel value="shooter" pt="lg">
+                <div className={styles.games_filters}>
+                  {!games ? (
+                    <div className={styles.loader}>
+                      <GridLoader color="#E5560E" size={20} />
+                    </div>
+                  ) : (
+                    games.map((game) => {
+                      if (game.attributes.Genre === "Shooter") {
+                        return (
+                          <div className={styles.game_container} key={game.id}>
+                            <Link href={"/Browse/" + game.id}>
+                              <Image
+                                src={game.attributes.image_url}
+                                height={200}
+                                width={140}
+                                alt="image of a game"
+                              />
+                            </Link>
+                            <div className={styles.game_info}>
+                              <Link href={"/Browse/" + game.id}>
+                                <h2>{game.attributes.Title}</h2>
+                              </Link>
+                              <div className={styles.game_actions}>
+                                <Link href={"/Browse/" + game.id}>
+                                  <span>Details</span>
+                                </Link>
+                                <button>Add To Cart</button>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      }
+                    })
+                  )}
+                </div>
+              </Tabs.Panel>
+              <Tabs.Panel value="racing" pt="lg">
+                <div className={styles.games_filters}>
+                  {!games ? (
+                    <div className={styles.loader}>
+                      <GridLoader color="#E5560E" size={20} />
+                    </div>
+                  ) : (
+                    games.map((game) => {
+                      if (game.attributes.Genre === "Racing") {
+                        return (
+                          <div className={styles.game_container} key={game.id}>
+                            <Link href={"/Browse/" + game.id}>
+                              <Image
+                                src={game.attributes.image_url}
+                                height={200}
+                                width={140}
+                                alt="image of a game"
+                              />
+                            </Link>
+                            <div className={styles.game_info}>
+                              <Link href={"/Browse/" + game.id}>
+                                <h2>{game.attributes.Title}</h2>
+                              </Link>
+                              <div className={styles.game_actions}>
+                                <Link href={"/Browse/" + game.id}>
+                                  <span>Details</span>
+                                </Link>
+                                <button>Add To Cart</button>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      }
+                    })
+                  )}
+                </div>
+              </Tabs.Panel>
             </Tabs>
           </div>
         </main>
