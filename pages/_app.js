@@ -1,5 +1,13 @@
 import "@/styles/globals.scss";
 
-export default function App({ Component, pageProps }) {
+import { AppProps } from "next/app";
+import dynamic from "next/dynamic";
+import React from "react";
+
+const App = ({ Component, pageProps }) => {
   return <Component {...pageProps} />;
-}
+};
+
+export default dynamic(() => Promise.resolve(App), {
+  ssr: false,
+});

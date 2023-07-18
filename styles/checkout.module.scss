@@ -3,8 +3,17 @@
     min-height: 90vh;
     width: 100%;
 
+    .text_danger {
+        color: red;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
     main {
+        
+        align-items: center;
         width: 95%;
+        height: 100%;
         margin: auto;
 
         h1 {
@@ -13,6 +22,53 @@
             letter-spacing: 0.3px;
             font-weight: 700;
             margin-bottom: 3rem;
+        }
+
+        div:nth-of-type(1) {
+            display: flex;
+        }
+
+        .checkout_form {
+            border: solid 1px red;
+            flex-grow: 1;
+            
+            form {
+                display: flex;
+                flex-direction: column;
+                row-gap: 1.5rem;
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 0.5rem;
+                }
+
+                input {
+                    @include input-style;
+                }
+            
+                input:focus {
+                    @include input-focused;
+                }
+            
+                label {
+                    @include input-label;
+                }
+    
+                button {
+                    @include button-style;
+                }
+
+                button:hover {
+                    @include button-hover
+                }
+            }
+
+
+        }
+        .checkout_items {
+            flex-grow: 4;
+            border: solid 1px blue;
         }
     }
 }

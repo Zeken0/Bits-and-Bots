@@ -28,7 +28,16 @@ function Navbar() {
             </Link>
           </li>
           <Link href="/">
-            <button className={styles.nav_actions_button}>Logout</button>
+            <button
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  localStorage.removeItem("user");
+                }
+              }}
+              className={styles.nav_actions_button}
+            >
+              Logout
+            </button>
           </Link>
         </ul>
 

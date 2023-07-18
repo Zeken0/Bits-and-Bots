@@ -6,6 +6,10 @@ import * as Yup from "yup";
 import LoginTab from "@/components/LoginTab";
 
 export default function LandingPage() {
+  if (typeof window !== "undefined") {
+    localStorage.setItem("cart", "[]");
+  }
+
   const {
     handleSubmit,
     handleChange,
@@ -36,7 +40,7 @@ export default function LandingPage() {
     },
   });
 
-  let userData = {
+  const userData = {
     email: values.register_email,
     password: values.register_password,
   };

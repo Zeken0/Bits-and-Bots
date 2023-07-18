@@ -7,7 +7,6 @@ import axios from "axios";
 import { GridLoader } from "react-spinners";
 import { Tabs } from "@mantine/core";
 import Footer from "@/components/Footer";
-import { useEffect, useState } from "react";
 
 export async function getStaticProps() {
   const response = await axios.get("http://127.0.0.1:1337/api/bits-and-botss");
@@ -18,16 +17,38 @@ export async function getStaticProps() {
   };
 }
 
-// const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
+if (typeof window !== "undefined") {
+  console.log(JSON.parse(localStorage.cart));
+}
 
 export default function Browse({ games }) {
-  const [cart, setCart] = useState([]);
+  const addToCart = (id, Title, image_url, Price) => {
+    let cart = [];
+    const newGame = {
+      Id: id,
+      Title: Title,
+      Image: image_url,
+      Price: Price,
+    };
 
-  useEffect(() => {
+    // if (typeof window !== "undefined") {
+    //   const lStorage = JSON.parse(localStorage.getItem("cart"));
+    //   console.log("lStorage", lStorage);
+    //   lStorage.map((cartData) => {
+    //     return console.log(cartData.Id);
+    //   });
+    // }
+
+    // if (cartData.Id === newGame.Id) {
+    //   cart.remove(newGame);
+    // }
+
+    cart.push(newGame);
+    cart = cart.concat(JSON.parse(localStorage.getItem("cart") || "[]"));
     if (typeof window !== "undefined") {
       localStorage.setItem("cart", JSON.stringify(cart));
     }
-  });
+  };
 
   return (
     <>
@@ -75,7 +96,7 @@ export default function Browse({ games }) {
                               src={game.attributes.image_url}
                               height={200}
                               width={140}
-                              alt="image of a game"
+                              alt="image of a game cover"
                             />
                           </Link>
                           <div className={styles.game_info}>
@@ -88,15 +109,12 @@ export default function Browse({ games }) {
                               </Link>
                               <button
                                 onClick={() => {
-                                  setCart(() => {
-                                    if (typeof window !== "undefined") {
-                                      localStorage.setItem("cart", [
-                                        game.attributes.Title,
-                                        game.attributes.image_url,
-                                        game.attributes.Price,
-                                      ]);
-                                    }
-                                  });
+                                  addToCart(
+                                    game.id,
+                                    game.attributes.Title,
+                                    game.attributes.image_url,
+                                    game.attributes.Price
+                                  );
                                 }}
                               >
                                 Add To Cart
