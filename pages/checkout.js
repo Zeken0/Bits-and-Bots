@@ -4,6 +4,11 @@ import Footer from "@/components/Footer";
 import styles from "/styles/Home.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { getUser } from "@/components/libs/localHelpers";
+
+if (getUser("user") === null) {
+  window.location = "/";
+}
 
 export default function Checkout() {
   const {

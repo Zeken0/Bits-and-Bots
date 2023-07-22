@@ -8,7 +8,12 @@ import { GrClose } from "react-icons/gr";
 import {
   getFromLocalStorage,
   saveToLocalStorage,
+  getUser,
 } from "@/components/libs/localHelpers";
+
+if (getUser("user") === null) {
+  window.location = "/";
+}
 
 export default function Cart() {
   let cartFromLocalStorage = getFromLocalStorage("cart");
@@ -55,16 +60,20 @@ export default function Cart() {
                   >
                     <div className={styles.cart_item_left}>
                       <span className={styles.cart_item_title}>
-                        {gameFromLocalStorage.Title}
+                        <Link href={"/Browse/" + gameFromLocalStorage.Id}>
+                          {gameFromLocalStorage.Title}
+                        </Link>
                       </span>
-                      <Image
-                        src={gameFromLocalStorage.Image}
-                        className={styles.cart_item_image}
-                        alt="image of a game cover"
-                        height={170}
-                        width={110}
-                        priority
-                      />
+                      <Link href={"/Browse/" + gameFromLocalStorage.Id}>
+                        <Image
+                          src={gameFromLocalStorage.Image}
+                          className={styles.cart_item_image}
+                          alt="image of a game cover"
+                          height={170}
+                          width={110}
+                          priority
+                        />
+                      </Link>
                       <GrClose
                         className={styles.cart_item_icon}
                         onClick={() => {

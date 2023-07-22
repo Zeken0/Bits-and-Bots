@@ -2,9 +2,13 @@ import Head from "next/head";
 import Navbar from "@/components/NavBar";
 import styles from "/styles/Home.module.scss";
 import axios from "axios";
-import { Title } from "@mantine/core";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import { getUser } from "@/components/libs/localHelpers";
+
+if (getUser("user") === null) {
+  window.location = "/";
+}
 
 export const getStaticPaths = async () => {
   let paths = [];

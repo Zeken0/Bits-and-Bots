@@ -105,3 +105,28 @@
         }
     }
 }
+
+/* ----------------------------------------------------- Tablet -------------------------------------------- */
+@media (max-width: 1112px) {
+
+    .games_filters {
+        align-items: center !important;
+        justify-content: center;
+    }
+    .game_container {
+        width: 21.8rem !important;
+        
+    }
+
+    .game_actions {
+        button {
+            width: 7rem !important;
+        }
+    }
+}
+
+/* ----------------------------------------------------- Mobile -------------------------------------------- */
+@media (max-width: 767px) {
+
+    
+}

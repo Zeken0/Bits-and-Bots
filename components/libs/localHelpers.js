@@ -11,5 +11,7 @@ export const getFromLocalStorage = function (keyNameToGetFromLocalStorage) {
 };
 
 export const getUser = function (userKey) {
-  return JSON.parse(localStorage.getItem(userKey));
+  if (typeof window !== "undefined") {
+    return JSON.parse(localStorage.getItem(userKey));
+  }
 };

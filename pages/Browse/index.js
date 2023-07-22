@@ -7,6 +7,15 @@ import axios from "axios";
 import { GridLoader } from "react-spinners";
 import { Tabs } from "@mantine/core";
 import Footer from "@/components/Footer";
+import {
+  saveToLocalStorage,
+  getFromLocalStorage,
+  getUser,
+} from "@/components/libs/localHelpers";
+
+if (getUser("user") === null) {
+  window.location = "/";
+}
 
 export async function getStaticProps() {
   const response = await axios.get("http://127.0.0.1:1337/api/bits-and-botss");
@@ -22,8 +31,7 @@ if (typeof window !== "undefined") {
 }
 
 export default function Browse({ games }) {
-  const addToCart = (id, Title, image_url, Price) => {
-    let cart = [];
+  const toggleGameToLocalStorage = (id, Title, image_url, Price) => {
     const newGame = {
       Id: id,
       Title: Title,
@@ -31,24 +39,27 @@ export default function Browse({ games }) {
       Price: Price,
     };
 
-    // if (typeof window !== "undefined") {
-    //   const lStorage = JSON.parse(localStorage.getItem("cart"));
-    //   console.log("lStorage", lStorage);
-    //   lStorage.map((cartData) => {
-    //     return console.log(cartData.Id);
-    //   });
-    // }
+    let cartItems = getFromLocalStorage("cart");
 
-    // if (cartData.Id === newGame.Id) {
-    //   cart.remove(newGame);
-    // }
+    let isInStorage = cartItems.find((item) => {
+      return item.Id === id;
+    });
 
-    cart.push(newGame);
-    cart = cart.concat(JSON.parse(localStorage.getItem("cart") || "[]"));
-    if (typeof window !== "undefined") {
-      localStorage.setItem("cart", JSON.stringify(cart));
+    if (isInStorage === undefined) {
+      cartItems.push(newGame);
+      saveToLocalStorage("cart", cartItems);
+    } else {
+      let removedcartItemsArray = cartItems.filter((item) => {
+        return item.Id !== id;
+      });
+      saveToLocalStorage("cart", removedcartItemsArray);
     }
+    // window.location.reload(false);
   };
+
+  let isInStorage = getFromLocalStorage("cart").filter((item) => {
+    return item.Id;
+  });
 
   return (
     <>
@@ -107,18 +118,33 @@ export default function Browse({ games }) {
                               <Link href={"/Browse/" + game.id}>
                                 <span>Details</span>
                               </Link>
-                              <button
-                                onClick={() => {
-                                  addToCart(
-                                    game.id,
-                                    game.attributes.Title,
-                                    game.attributes.image_url,
-                                    game.attributes.Price
-                                  );
-                                }}
-                              >
-                                Add To Cart
-                              </button>
+                              {isInStorage === game.id ? (
+                                <button
+                                  onClick={() => {
+                                    toggleGameToLocalStorage(
+                                      game.id,
+                                      game.attributes.Title,
+                                      game.attributes.image_url,
+                                      game.attributes.Price
+                                    );
+                                  }}
+                                >
+                                  Remove From Cart
+                                </button>
+                              ) : (
+                                <button
+                                  onClick={() => {
+                                    toggleGameToLocalStorage(
+                                      game.id,
+                                      game.attributes.Title,
+                                      game.attributes.image_url,
+                                      game.attributes.Price
+                                    );
+                                  }}
+                                >
+                                  Add To Cart
+                                </button>
+                              )}
                             </div>
                           </div>
                         </div>

@@ -31,7 +31,7 @@ function Navbar() {
             <button
               onClick={() => {
                 if (typeof window !== "undefined") {
-                  localStorage.removeItem("user");
+                  localStorage.clear();
                 }
               }}
               className={styles.nav_actions_button}
