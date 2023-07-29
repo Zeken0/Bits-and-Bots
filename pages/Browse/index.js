@@ -57,9 +57,11 @@ export default function Browse({ games }) {
     // window.location.reload(false);
   };
 
-  let isInStorage = getFromLocalStorage("cart").filter((item) => {
+  let isInStorage = getFromLocalStorage("cart").find((item) => {
     return item.Id;
   });
+  // console.log("isInStorage", isInStorage.Id);
+  // console.log("games", games[2].id);
 
   return (
     <>
@@ -100,6 +102,7 @@ export default function Browse({ games }) {
                     </div>
                   ) : (
                     games.map((game) => {
+                      console.log("game", game.id);
                       return (
                         <div className={styles.game_container} key={game.id}>
                           <Link href={"/Browse/" + game.id}>
@@ -118,33 +121,23 @@ export default function Browse({ games }) {
                               <Link href={"/Browse/" + game.id}>
                                 <span>Details</span>
                               </Link>
-                              {isInStorage === game.id ? (
-                                <button
-                                  onClick={() => {
-                                    toggleGameToLocalStorage(
-                                      game.id,
-                                      game.attributes.Title,
-                                      game.attributes.image_url,
-                                      game.attributes.Price
-                                    );
-                                  }}
-                                >
-                                  Remove From Cart
-                                </button>
-                              ) : (
-                                <button
-                                  onClick={() => {
-                                    toggleGameToLocalStorage(
-                                      game.id,
-                                      game.attributes.Title,
-                                      game.attributes.image_url,
-                                      game.attributes.Price
-                                    );
-                                  }}
-                                >
-                                  Add To Cart
-                                </button>
-                              )}
+
+                              <button
+                                onClick={() => {
+                                  toggleGameToLocalStorage(
+                                    game.id,
+                                    game.attributes.Title,
+                                    game.attributes.image_url,
+                                    game.attributes.Price
+                                  );
+                                }}
+                              >
+                                {isInStorage === game.id ? (
+                                  <>Added To Cart</>
+                                ) : (
+                                  <>Add To Cart</>
+                                )}
+                              </button>
                             </div>
                           </div>
                         </div>

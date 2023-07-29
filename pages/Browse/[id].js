@@ -4,7 +4,11 @@ import styles from "/styles/Home.module.scss";
 import axios from "axios";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import { getUser } from "@/components/libs/localHelpers";
+import {
+  getFromLocalStorage,
+  getUser,
+  saveToLocalStorage,
+} from "@/components/libs/localHelpers";
 
 if (getUser("user") === null) {
   window.location = "/";
@@ -52,7 +56,38 @@ export const getStaticProps = async (context) => {
 };
 
 export default function Detail({ game }) {
+  const toggleGameToLocalStorage = (id, Title, image_url, Price) => {
+    const newGame = {
+      Id: id,
+      Title: Title,
+      Image: image_url,
+      Price: Price,
+    };
+
+    let cartItems = getFromLocalStorage("cart");
+
+    let isInStorage = cartItems.find((item) => {
+      return item.Id === id;
+    });
+
+    if (isInStorage === undefined) {
+      cartItems.push(newGame);
+      saveToLocalStorage("cart", cartItems);
+    } else {
+      let removedcartItemsArray = cartItems.filter((item) => {
+        return item.Id !== id;
+      });
+      saveToLocalStorage("cart", removedcartItemsArray);
+    }
+    // window.location.reload(false);
+  };
+
+  let isInStorage = getFromLocalStorage("cart").find((item) => {
+    return item.Id;
+  });
+
   console.log("game:", game.data.attributes.Title);
+  console.log("isInStorage", isInStorage.Id);
   return (
     <>
       <Head>
@@ -78,7 +113,33 @@ export default function Detail({ game }) {
             <div className={styles.details_info}>
               <p>{game.data.attributes.Details}</p>
               <h2>${game.data.attributes.Price}</h2>
-              <button>Add To Cart</button>
+              {isInStorage !== game.data.id ? (
+                <button
+                  onClick={() => {
+                    toggleGameToLocalStorage(
+                      game.data.id,
+                      game.data.attributes.Title,
+                      game.data.attributes.image_url,
+                      game.data.attributes.Price
+                    );
+                  }}
+                >
+                  Add To Cart
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    toggleGameToLocalStorage(
+                      game.data.id,
+                      game.data.attributes.Title,
+                      game.data.attributes.image_url,
+                      game.data.attributes.Price
+                    );
+                  }}
+                >
+                  Added To Cart
+                </button>
+              )}
             </div>
           </div>
         </main>

@@ -4,13 +4,24 @@ import Footer from "@/components/Footer";
 import styles from "/styles/Home.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { getUser } from "@/components/libs/localHelpers";
+import {
+  getFromLocalStorage,
+  getUser,
+  saveToLocalStorage,
+} from "@/components/libs/localHelpers";
+import { useDisclosure } from "@mantine/hooks";
+import { Modal } from "@mantine/core";
+import Image from "next/image";
 
 if (getUser("user") === null) {
   window.location = "/";
 }
 
 export default function Checkout() {
+  const [opened, { open, close }] = useDisclosure(false);
+
+  const cartItems = getFromLocalStorage("cart");
+
   const {
     handleSubmit,
     handleChange,
@@ -35,14 +46,12 @@ export default function Checkout() {
       email: Yup.string().required("Email required").email("Invalid email"),
 
       credit_card: Yup.string()
-        .trim()
         .max(16, "Must be shorter than 17 characters")
         .min(16, "Must be higher than 15 characters")
         .required("Card number required"),
     }),
     onSubmit: () => {
-      alert("Purchase successful");
-      resetForm();
+      // resetForm();
     },
   });
 
@@ -111,8 +120,42 @@ export default function Checkout() {
                 <button type="submit">Confirm Purchase</button>
               </form>
             </div>
-            <div className={styles.checkout_items}>items</div>
+            <div className={styles.checkout_items}>
+              {cartItems.map((item) => {
+                console.log(item.Title);
+                <div key={item.Id}>
+                  <h3>{item.Title}</h3>
+                  <Image
+                    alt="game cover"
+                    src={item.Image}
+                    height={100}
+                    width={70}
+                  />
+                  <h4>{item.Price}</h4>
+                </div>;
+              })}
+            </div>
           </div>
+          <Modal
+            opened={opened}
+            onClose={close}
+            title="Confirm Your Purchase"
+            centered
+            size={"sm"}
+          >
+            <button
+              className={styles.confirm_btn}
+              onClick={() => {
+                window.location = "Browse";
+                saveToLocalStorage("cart", []);
+              }}
+            >
+              Confirm
+            </button>
+            <button className={styles.cancel_btn} onClick={close}>
+              Cancel
+            </button>
+          </Modal>
         </main>
       </div>
       <Footer />

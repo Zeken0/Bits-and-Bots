@@ -113,9 +113,9 @@
         align-items: center !important;
         justify-content: center;
     }
+
     .game_container {
         width: 21.8rem !important;
-        
     }
 
     .game_actions {
@@ -128,5 +128,38 @@
 /* ----------------------------------------------------- Mobile -------------------------------------------- */
 @media (max-width: 767px) {
 
-    
+    .browse_container {
+
+        main {
+            width: 100% !important;
+        }
+    }
+
+
+    .browse_actions {
+        padding: 0 0.7rem;
+
+        h1 {
+            font-size: 2rem !important;
+        }
+
+        button {
+            font-size: 0.9rem !important;
+            padding: 0.7rem !important;
+        }
+    }
+
+    .game_container {
+        width: 100% !important;
+        padding: 1rem 0.7rem !important;
+    }
+
+    .game_actions {
+
+        button {
+            font-size: 0.9rem !important;
+            padding: 0.8rem !important;
+        }
+    }
+
 }
