@@ -18,19 +18,23 @@ if (getUser("user") === null) {
 }
 
 export async function getStaticProps() {
-  const response = await axios.get(
-    "https://bitsbotsapi.onrender.com/api/bits-and-botss"
-  );
-  const data = await response.data;
+  try {
+    const response = await axios.get(
+      "https://bitsbotsapi.onrender.com/api/bits-and-botss"
+    );
+    const data = await response.data;
 
-  return {
-    props: { games: data.data },
-  };
+    return {
+      props: { games: data.data },
+    };
+  } catch (error) {
+    console.warn("failed to fetch games:", error.message);
+  }
 }
 
-if (typeof window !== "undefined") {
-  console.log(JSON.parse(localStorage.cart));
-}
+// if (typeof window !== "undefined") {
+//   console.log(JSON.parse(localStorage.cart));
+// }
 
 export default function Browse({ games }) {
   const toggleGameToLocalStorage = (id, Title, image_url, Price) => {
