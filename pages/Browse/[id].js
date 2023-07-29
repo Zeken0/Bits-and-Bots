@@ -18,7 +18,7 @@ export const getStaticPaths = async () => {
   let paths = [];
   try {
     const response = await axios.get(
-      "http://127.0.0.1:1337/api/bits-and-botss"
+      "https://bitsbotsapi.onrender.com/api/bits-and-botss"
     );
     const games = await response.data;
 

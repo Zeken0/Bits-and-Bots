@@ -18,7 +18,9 @@ if (getUser("user") === null) {
 }
 
 export async function getStaticProps() {
-  const response = await axios.get("http://127.0.0.1:1337/api/bits-and-botss");
+  const response = await axios.get(
+    "https://bitsbotsapi.onrender.com/api/bits-and-botss"
+  );
   const data = await response.data;
 
   return {
