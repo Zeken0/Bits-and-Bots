@@ -98,7 +98,7 @@ export default function Cart() {
                       />
                     </div>
                     <div className={styles.cart_item_right}>
-                      ${gameFromLocalStorage.Price}
+                      ${gameFromLocalStorage.Price}.00
                     </div>
                   </div>
                 );

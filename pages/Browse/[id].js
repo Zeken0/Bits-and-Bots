@@ -112,7 +112,7 @@ export default function Detail({ game }) {
             />
             <div className={styles.details_info}>
               <p>{game.data.attributes.Details}</p>
-              <h2>${game.data.attributes.Price}</h2>
+              <h2>${game.data.attributes.Price}.00</h2>
               {isInStorage !== game.data.id ? (
                 <button
                   onClick={() => {
