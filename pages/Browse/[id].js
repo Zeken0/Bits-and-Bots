@@ -47,7 +47,7 @@ export const getStaticProps = async (context) => {
     const game = await response.data;
     props = { game: game };
   } catch (error) {
-    console.warn("failed to fetch data", error.message);
+    console.warn("failed to fetch game:", error.message);
   }
 
   return {

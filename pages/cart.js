@@ -59,21 +59,6 @@ export default function Cart() {
                     key={gameFromLocalStorage.Id}
                   >
                     <div className={styles.cart_item_left}>
-                      <span className={styles.cart_item_title}>
-                        <Link href={"/Browse/" + gameFromLocalStorage.Id}>
-                          {gameFromLocalStorage.Title}
-                        </Link>
-                      </span>
-                      <Link href={"/Browse/" + gameFromLocalStorage.Id}>
-                        <Image
-                          src={gameFromLocalStorage.Image}
-                          className={styles.cart_item_image}
-                          alt="image of a game cover"
-                          height={170}
-                          width={110}
-                          priority
-                        />
-                      </Link>
                       <GrClose
                         className={styles.cart_item_icon}
                         onClick={() => {
@@ -89,6 +74,21 @@ export default function Cart() {
                           saveToLocalStorage("cart", removedcartItemsArray);
                         }}
                       />
+                      <Link href={"/Browse/" + gameFromLocalStorage.Id}>
+                        <Image
+                          src={gameFromLocalStorage.Image}
+                          className={styles.cart_item_image}
+                          alt="image of a game cover"
+                          height={210}
+                          width={145}
+                          priority
+                        />
+                      </Link>
+                      <span className={styles.cart_item_title}>
+                        <Link href={"/Browse/" + gameFromLocalStorage.Id}>
+                          {gameFromLocalStorage.Title}
+                        </Link>
+                      </span>
                     </div>
                     <div className={styles.cart_item_mid}>
                       <input

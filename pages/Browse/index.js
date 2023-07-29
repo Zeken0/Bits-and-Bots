@@ -108,7 +108,6 @@ export default function Browse({ games }) {
                     </div>
                   ) : (
                     games.map((game) => {
-                      console.log("game", game.id);
                       return (
                         <div className={styles.game_container} key={game.id}>
                           <Link href={"/Browse/" + game.id}>
