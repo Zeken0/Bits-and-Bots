@@ -43,7 +43,6 @@
             border-bottom: 2px solid rgba(100, 100, 100, 0.2); 
 
             .cart_item {
-                border: solid 1px solid red;
                 display:  flex;
                 align-items: center;
                 font-weight: 500;
@@ -57,9 +56,7 @@
                     justify-content: space-between;
                     width: 70%;
 
-                    .cart_item_title {
-                        border: solid 2px solid red !important;
-                        
+                    .cart_item_title {                      
                         font-weight: 500;
                     }
 
