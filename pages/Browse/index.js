@@ -111,7 +111,7 @@ export default function Browse({ games }) {
                       console.log("game", game.id);
                       return (
                         <div className={styles.game_container} key={game.id}>
-                          <Link href={"/Browse/" + game.id}>
+                          <Link href={"/Detail/" + game.id}>
                             <Image
                               src={game.attributes.image_url}
                               height={200}
@@ -120,11 +120,11 @@ export default function Browse({ games }) {
                             />
                           </Link>
                           <div className={styles.game_info}>
-                            <Link href={"/Browse/" + game.id}>
+                            <Link href={"/Detail/" + game.id}>
                               <h2>{game.attributes.Title}</h2>
                             </Link>
                             <div className={styles.game_actions}>
-                              <Link href={"/Browse/" + game.id}>
+                              <Link href={"/Detail/" + game.id}>
                                 <span>Details</span>
                               </Link>
 
