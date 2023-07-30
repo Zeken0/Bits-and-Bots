@@ -12,6 +12,7 @@ import {
   getFromLocalStorage,
   getUser,
 } from "@/components/libs/localHelpers";
+import { useState } from "react";
 
 if (getUser("user") === null) {
   window.location = "/";
@@ -33,6 +34,7 @@ export async function getStaticProps() {
 }
 
 export default function Browse({ games }) {
+  const [isInCart, setIsInCart] = useState(false);
   const toggleGameToLocalStorage = (id, Title, image_url, Price) => {
     const newGame = {
       Id: id,
@@ -42,7 +44,6 @@ export default function Browse({ games }) {
     };
 
     let cartItems = getFromLocalStorage("cart");
-
     let isInStorage = cartItems.find((item) => {
       return item.Id === id;
     });
@@ -50,20 +51,15 @@ export default function Browse({ games }) {
     if (isInStorage === undefined) {
       cartItems.push(newGame);
       saveToLocalStorage("cart", cartItems);
+      setIsInCart(true);
     } else {
       let removedcartItemsArray = cartItems.filter((item) => {
         return item.Id !== id;
       });
       saveToLocalStorage("cart", removedcartItemsArray);
+      setIsInCart(false);
     }
-    // window.location.reload(false);
   };
-
-  let isInStorage = getFromLocalStorage("cart").find((item) => {
-    return item.Id;
-  });
-  // console.log("isInStorage", isInStorage.Id);
-  // console.log("games", games[2].id);
 
   return (
     <>
@@ -104,6 +100,12 @@ export default function Browse({ games }) {
                     </div>
                   ) : (
                     games.map((game) => {
+                      const gameInStorage = getFromLocalStorage("cart").find(
+                        (item) => {
+                          return item.Id === game.id;
+                        }
+                      );
+
                       return (
                         <div className={styles.game_container} key={game.id}>
                           <Link href={"/Browse/" + game.id} key={game.id}>
@@ -133,7 +135,7 @@ export default function Browse({ games }) {
                                   );
                                 }}
                               >
-                                {isInStorage === game.id ? (
+                                {gameInStorage ? (
                                   <>Added To Cart</>
                                 ) : (
                                   <>Add To Cart</>
@@ -155,6 +157,11 @@ export default function Browse({ games }) {
                     </div>
                   ) : (
                     games.map((game) => {
+                      const gameInStorage = getFromLocalStorage("cart").find(
+                        (item) => {
+                          return item.Id === game.id;
+                        }
+                      );
                       if (game.attributes.Genre === "RPG") {
                         return (
                           <div className={styles.game_container} key={game.id}>
@@ -184,7 +191,7 @@ export default function Browse({ games }) {
                                     );
                                   }}
                                 >
-                                  {isInStorage === game.id ? (
+                                  {gameInStorage ? (
                                     <>Added To Cart</>
                                   ) : (
                                     <>Add To Cart</>
@@ -207,6 +214,11 @@ export default function Browse({ games }) {
                     </div>
                   ) : (
                     games.map((game) => {
+                      const gameInStorage = getFromLocalStorage("cart").find(
+                        (item) => {
+                          return item.Id === game.id;
+                        }
+                      );
                       if (game.attributes.Genre === "Action") {
                         return (
                           <div className={styles.game_container} key={game.id}>
@@ -236,7 +248,7 @@ export default function Browse({ games }) {
                                     );
                                   }}
                                 >
-                                  {isInStorage === game.id ? (
+                                  {gameInStorage ? (
                                     <>Added To Cart</>
                                   ) : (
                                     <>Add To Cart</>
@@ -259,6 +271,11 @@ export default function Browse({ games }) {
                     </div>
                   ) : (
                     games.map((game) => {
+                      const gameInStorage = getFromLocalStorage("cart").find(
+                        (item) => {
+                          return item.Id === game.id;
+                        }
+                      );
                       if (game.attributes.Genre === "Shooter") {
                         return (
                           <div className={styles.game_container} key={game.id}>
@@ -288,7 +305,7 @@ export default function Browse({ games }) {
                                     );
                                   }}
                                 >
-                                  {isInStorage === game.id ? (
+                                  {gameInStorage ? (
                                     <>Added To Cart</>
                                   ) : (
                                     <>Add To Cart</>
@@ -311,6 +328,11 @@ export default function Browse({ games }) {
                     </div>
                   ) : (
                     games.map((game) => {
+                      const gameInStorage = getFromLocalStorage("cart").find(
+                        (item) => {
+                          return item.Id === game.id;
+                        }
+                      );
                       if (game.attributes.Genre === "Racing") {
                         return (
                           <div className={styles.game_container} key={game.id}>
@@ -340,7 +362,7 @@ export default function Browse({ games }) {
                                     );
                                   }}
                                 >
-                                  {isInStorage === game.id ? (
+                                  {gameInStorage ? (
                                     <>Added To Cart</>
                                   ) : (
                                     <>Add To Cart</>
