@@ -86,8 +86,8 @@ export default function Detail({ game }) {
     return item.Id;
   });
 
-  console.log("game:", game.data.attributes.Title);
-  console.log("isInStorage", isInStorage.Id);
+  // console.log("game:", game.data.attributes.Title);
+  // console.log("isInStorage", isInStorage.Id);
   return (
     <>
       <Head>

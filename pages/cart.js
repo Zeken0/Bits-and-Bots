@@ -111,7 +111,7 @@ export default function Cart() {
               {cartFromLocalStorage.length <= 0 ? (
                 <span className={styles.cart_total}>$0.00</span>
               ) : (
-                <span className={styles.cart_total}>${totalAmount}</span>
+                <span className={styles.cart_total}>${totalAmount}.00</span>
               )}
             </div>
             {cartFromLocalStorage.length <= 0 ? (

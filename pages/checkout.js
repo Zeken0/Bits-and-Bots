@@ -12,6 +12,7 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import { Modal } from "@mantine/core";
 import Image from "next/image";
+import Link from "next/link";
 
 if (getUser("user") === null) {
   window.location = "/";
@@ -20,7 +21,7 @@ if (getUser("user") === null) {
 export default function Checkout() {
   const [opened, { open, close }] = useDisclosure(false);
 
-  const cartItems = getFromLocalStorage("cart");
+  const checkoutItems = getFromLocalStorage("cart");
 
   const {
     handleSubmit,
@@ -51,7 +52,8 @@ export default function Checkout() {
         .required("Card number required"),
     }),
     onSubmit: () => {
-      // resetForm();
+      open();
+      resetForm();
     },
   });
 
@@ -121,19 +123,25 @@ export default function Checkout() {
               </form>
             </div>
             <div className={styles.checkout_items}>
-              <h2>Items in Cart</h2>
-              {cartItems.map((item) => {
-                console.log(item);
-                <div key={item.Id}>
-                  <h3>{item.Title}</h3>
-                  <Image
-                    alt="game cover"
-                    src={item.Image}
-                    height={100}
-                    width={70}
-                  />
-                  <h4>{item.Price}</h4>
-                </div>;
+              <h2>Games in the Cart:</h2>
+              {checkoutItems.map((item) => {
+                return (
+                  <div key={item.Id} className={styles.checkout_item}>
+                    <Link href={"Browse/" + item.Id}>
+                      <Image
+                        alt="game cover"
+                        src={item.Image}
+                        height={240}
+                        width={145}
+                      />
+                    </Link>
+
+                    <Link href={"Browse/" + item.Id}>
+                      <h3>{item.Title}</h3>
+                    </Link>
+                    <h4>${item.Price}.00</h4>
+                  </div>
+                );
               })}
             </div>
           </div>
@@ -143,6 +151,7 @@ export default function Checkout() {
             title="Confirm Your Purchase"
             centered
             size={"sm"}
+            padding={"lg"}
           >
             <button
               className={styles.confirm_btn}

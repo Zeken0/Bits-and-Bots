@@ -32,10 +32,6 @@ export async function getStaticProps() {
   }
 }
 
-// if (typeof window !== "undefined") {
-//   console.log(JSON.parse(localStorage.cart));
-// }
-
 export default function Browse({ games }) {
   const toggleGameToLocalStorage = (id, Title, image_url, Price) => {
     const newGame = {
@@ -104,7 +100,7 @@ export default function Browse({ games }) {
                 <div className={styles.games_filters}>
                   {!games ? (
                     <div className={styles.loader}>
-                      <GridLoader color="#E5560E" size={20} />
+                      <GridLoader color="#E5560E" size={15} />
                     </div>
                   ) : (
                     games.map((game) => {
@@ -155,7 +151,7 @@ export default function Browse({ games }) {
                 <div className={styles.games_filters}>
                   {!games ? (
                     <div className={styles.loader}>
-                      <GridLoader color="#E5560E" size={20} />
+                      <GridLoader color="#E5560E" size={15} />
                     </div>
                   ) : (
                     games.map((game) => {
@@ -178,7 +174,22 @@ export default function Browse({ games }) {
                                 <Link href={"/Browse/" + game.id}>
                                   <span>Details</span>
                                 </Link>
-                                <button>Add To Cart</button>
+                                <button
+                                  onClick={() => {
+                                    toggleGameToLocalStorage(
+                                      game.id,
+                                      game.attributes.Title,
+                                      game.attributes.image_url,
+                                      game.attributes.Price
+                                    );
+                                  }}
+                                >
+                                  {isInStorage === game.id ? (
+                                    <>Added To Cart</>
+                                  ) : (
+                                    <>Add To Cart</>
+                                  )}
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -192,7 +203,7 @@ export default function Browse({ games }) {
                 <div className={styles.games_filters}>
                   {!games ? (
                     <div className={styles.loader}>
-                      <GridLoader color="#E5560E" size={20} />
+                      <GridLoader color="#E5560E" size={15} />
                     </div>
                   ) : (
                     games.map((game) => {
@@ -215,7 +226,22 @@ export default function Browse({ games }) {
                                 <Link href={"/Browse/" + game.id}>
                                   <span>Details</span>
                                 </Link>
-                                <button>Add To Cart</button>
+                                <button
+                                  onClick={() => {
+                                    toggleGameToLocalStorage(
+                                      game.id,
+                                      game.attributes.Title,
+                                      game.attributes.image_url,
+                                      game.attributes.Price
+                                    );
+                                  }}
+                                >
+                                  {isInStorage === game.id ? (
+                                    <>Added To Cart</>
+                                  ) : (
+                                    <>Add To Cart</>
+                                  )}
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -229,7 +255,7 @@ export default function Browse({ games }) {
                 <div className={styles.games_filters}>
                   {!games ? (
                     <div className={styles.loader}>
-                      <GridLoader color="#E5560E" size={20} />
+                      <GridLoader color="#E5560E" size={15} />
                     </div>
                   ) : (
                     games.map((game) => {
@@ -252,7 +278,22 @@ export default function Browse({ games }) {
                                 <Link href={"/Browse/" + game.id}>
                                   <span>Details</span>
                                 </Link>
-                                <button>Add To Cart</button>
+                                <button
+                                  onClick={() => {
+                                    toggleGameToLocalStorage(
+                                      game.id,
+                                      game.attributes.Title,
+                                      game.attributes.image_url,
+                                      game.attributes.Price
+                                    );
+                                  }}
+                                >
+                                  {isInStorage === game.id ? (
+                                    <>Added To Cart</>
+                                  ) : (
+                                    <>Add To Cart</>
+                                  )}
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -266,7 +307,7 @@ export default function Browse({ games }) {
                 <div className={styles.games_filters}>
                   {!games ? (
                     <div className={styles.loader}>
-                      <GridLoader color="#E5560E" size={20} />
+                      <GridLoader color="#E5560E" size={15} />
                     </div>
                   ) : (
                     games.map((game) => {
@@ -289,7 +330,22 @@ export default function Browse({ games }) {
                                 <Link href={"/Browse/" + game.id}>
                                   <span>Details</span>
                                 </Link>
-                                <button>Add To Cart</button>
+                                <button
+                                  onClick={() => {
+                                    toggleGameToLocalStorage(
+                                      game.id,
+                                      game.attributes.Title,
+                                      game.attributes.image_url,
+                                      game.attributes.Price
+                                    );
+                                  }}
+                                >
+                                  {isInStorage === game.id ? (
+                                    <>Added To Cart</>
+                                  ) : (
+                                    <>Add To Cart</>
+                                  )}
+                                </button>
                               </div>
                             </div>
                           </div>
