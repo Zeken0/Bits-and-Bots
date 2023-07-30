@@ -110,11 +110,11 @@ export default function Browse({ games }) {
                     games.map((game) => {
                       return (
                         <div className={styles.game_container} key={game.id}>
-                          <Link href={"/Browse/" + game.id}>
+                          <Link href={"/Browse/" + game.id} key={game.id}>
                             <Image
                               src={game.attributes.image_url}
-                              height={200}
-                              width={140}
+                              height={210}
+                              width={145}
                               alt="image of a game cover"
                             />
                           </Link>
