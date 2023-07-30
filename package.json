@@ -23,9 +23,11 @@
     "react-icons": "^4.10.1",
     "react-spinners": "^0.13.8",
     "sass": "^1.63.4",
+    "swiper": "^10.0.4",
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "file-loader": "^6.2.0"
+    "file-loader": "^6.2.0",
+    "html-loader": "^4.2.0"
   }
 }

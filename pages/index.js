@@ -4,6 +4,7 @@ import { Tabs } from "@mantine/core";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import LoginTab from "@/components/LoginTab";
+import Slider from "@/components/Sliders";
 
 export default function LandingPage() {
   const {
@@ -41,6 +42,14 @@ export default function LandingPage() {
     password: values.register_password,
   };
 
+  const slides = [
+    { imageUrl: "/../public/images/image1.jpg" },
+    { imageUrl: "/../public/images/image2.jpg" },
+    { imageUrl: "/../public/images/image3.jpg" },
+    { imageUrl: "/../public/images/image4.jpg" },
+    { imageUrl: "/../public/images/image5.jpg" },
+  ];
+
   return (
     <>
       <Head>
@@ -53,58 +62,61 @@ export default function LandingPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main_landingPage}>
-        <div className={styles.overlay}></div>
+        <div className={styles.user_form}>
+          <h1>Welcome To Bits & bots</h1>
 
-        <h1>Welcome To Bits & bots</h1>
+          <Tabs color="orange" radius="xs" defaultValue="login">
+            <Tabs.List grow>
+              <Tabs.Tab value="login">Login</Tabs.Tab>
+              <Tabs.Tab value="register">Register</Tabs.Tab>
+            </Tabs.List>
 
-        <Tabs color="orange" radius="xs" defaultValue="login">
-          <Tabs.List grow>
-            <Tabs.Tab value="login">Login</Tabs.Tab>
-            <Tabs.Tab value="register">Register</Tabs.Tab>
-          </Tabs.List>
+            <Tabs.Panel value="login" pt="lg">
+              <LoginTab />
+            </Tabs.Panel>
 
-          <Tabs.Panel value="login" pt="lg">
-            <LoginTab />
-          </Tabs.Panel>
-
-          <Tabs.Panel value="register" pt="lg">
-            <form className={styles.registerForm} onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="register_email">Email address</label>
-                <input
-                  type="email"
-                  id="register_email"
-                  placeholder="test@hotmail.com"
-                  value={values.register_email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {touched.register_email && errors.register_email ? (
-                  <div className={styles.text_danger}>
-                    {errors.register_email}
-                  </div>
-                ) : null}
-              </div>
-              <div>
-                <label htmlFor="register_password">Password</label>
-                <input
-                  type="password"
-                  id="register_password"
-                  placeholder="password"
-                  value={values.register_password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {touched.register_password && errors.register_password ? (
-                  <div className={styles.text_danger}>
-                    {errors.register_password}
-                  </div>
-                ) : null}
-              </div>
-              <button type="submit">Register</button>
-            </form>
-          </Tabs.Panel>
-        </Tabs>
+            <Tabs.Panel value="register" pt="lg">
+              <form className={styles.registerForm} onSubmit={handleSubmit}>
+                <div>
+                  <label htmlFor="register_email">Email address</label>
+                  <input
+                    type="email"
+                    id="register_email"
+                    placeholder="test@hotmail.com"
+                    value={values.register_email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.register_email && errors.register_email ? (
+                    <div className={styles.text_danger}>
+                      {errors.register_email}
+                    </div>
+                  ) : null}
+                </div>
+                <div>
+                  <label htmlFor="register_password">Password</label>
+                  <input
+                    type="password"
+                    id="register_password"
+                    placeholder="password"
+                    value={values.register_password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.register_password && errors.register_password ? (
+                    <div className={styles.text_danger}>
+                      {errors.register_password}
+                    </div>
+                  ) : null}
+                </div>
+                <button type="submit">Register</button>
+              </form>
+            </Tabs.Panel>
+          </Tabs>
+        </div>
+        <div className={styles.slider_container}>
+          <Slider slides={slides} />
+        </div>
       </main>
     </>
   );

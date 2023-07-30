@@ -121,8 +121,9 @@ export default function Checkout() {
               </form>
             </div>
             <div className={styles.checkout_items}>
+              <h2>Items in Cart</h2>
               {cartItems.map((item) => {
-                console.log(item.Title);
+                console.log(item);
                 <div key={item.Id}>
                   <h3>{item.Title}</h3>
                   <Image
