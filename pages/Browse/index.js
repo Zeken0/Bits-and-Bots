@@ -20,7 +20,7 @@ if (getUser("user") === null) {
 export async function getStaticProps() {
   try {
     const response = await axios.get(
-      "https://bitsbotsapi.onrender.com/api/bits-and-botss"
+      "https://bitsbotsapi-7137f69f1c72.herokuapp.com/api/bits-and-botss"
     );
     const data = await response.data;
 

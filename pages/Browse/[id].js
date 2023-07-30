@@ -18,7 +18,7 @@ export const getStaticPaths = async () => {
   let paths = [];
   try {
     const response = await axios.get(
-      "https://bitsbotsapi.onrender.com/api/bits-and-botss"
+      "https://bitsbotsapi-7137f69f1c72.herokuapp.com/api/bits-and-botss"
     );
     const games = await response.data;
 
@@ -42,7 +42,7 @@ export const getStaticProps = async (context) => {
   try {
     const id = context.params.id;
     const response = await axios.get(
-      "https://bitsbotsapi.onrender.com/api/bits-and-botss/" + id
+      "https://bitsbotsapi-7137f69f1c72.herokuapp.com/api/bits-and-botss/" + id
     );
     const game = await response.data;
     props = { game: game };
