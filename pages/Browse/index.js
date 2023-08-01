@@ -12,7 +12,7 @@ import {
   getFromLocalStorage,
   getUser,
 } from "@/components/libs/localHelpers";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 if (getUser("user") === null) {
   window.location = "/";
@@ -35,6 +35,14 @@ export async function getStaticProps() {
 
 export default function Browse({ games }) {
   const [isInCart, setIsInCart] = useState(false);
+
+  useEffect(() => {
+    const gameInStorage = getFromLocalStorage("cart").find(
+      (item) => item.Id === games.id
+    );
+    setIsInCart(!!gameInStorage);
+  }, [games]);
+
   const toggleGameToLocalStorage = (id, Title, image_url, Price) => {
     const newGame = {
       Id: id,
@@ -114,6 +122,7 @@ export default function Browse({ games }) {
                               height={210}
                               width={145}
                               alt="image of a game cover"
+                              priority
                             />
                           </Link>
                           <div className={styles.game_info}>
@@ -171,6 +180,7 @@ export default function Browse({ games }) {
                                 height={200}
                                 width={140}
                                 alt="image of a game"
+                                priority
                               />
                             </Link>
                             <div className={styles.game_info}>
@@ -228,6 +238,7 @@ export default function Browse({ games }) {
                                 height={200}
                                 width={140}
                                 alt="image of a game"
+                                priority
                               />
                             </Link>
                             <div className={styles.game_info}>
@@ -285,6 +296,7 @@ export default function Browse({ games }) {
                                 height={200}
                                 width={140}
                                 alt="image of a game"
+                                priority
                               />
                             </Link>
                             <div className={styles.game_info}>
@@ -342,6 +354,7 @@ export default function Browse({ games }) {
                                 height={200}
                                 width={140}
                                 alt="image of a game"
+                                priority
                               />
                             </Link>
                             <div className={styles.game_info}>

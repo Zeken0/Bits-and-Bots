@@ -111,6 +111,7 @@ export default function Detail({ game }) {
               height={400}
               width={300}
               alt="Picture of a game cover"
+              priority
             />
             <div className={styles.details_info}>
               <p>{game.data.attributes.Details}</p>
