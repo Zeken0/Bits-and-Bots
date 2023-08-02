@@ -149,7 +149,9 @@ export default function LandingPage() {
           <Slider {...settings} className={styles.slider}>
             <div>
               <Image
-                src={"/../public/images/image1.jpg"}
+                src={
+                  "https://images.pexels.com/photos/7915432/pexels-photo-7915432.jpeg?auto=compress&cs=tinysrgb&w=600"
+                }
                 alt="Image of people playing video games"
                 height={330}
                 width={512}
@@ -169,7 +171,9 @@ export default function LandingPage() {
             </div>
             <div>
               <Image
-                src={"/../public/images/image3.jpg"}
+                src={
+                  "https://images.pexels.com/photos/735911/pexels-photo-735911.jpeg?auto=compress&cs=tinysrgb&w=600"
+                }
                 alt="Image of people playing video games"
                 height={330}
                 width={512}
@@ -178,7 +182,9 @@ export default function LandingPage() {
             </div>
             <div>
               <Image
-                src={"/../public/images/image4.jpg"}
+                src={
+                  "https://images.pexels.com/photos/1293269/pexels-photo-1293269.jpeg?auto=compress&cs=tinysrgb&w=600"
+                }
                 alt="Image of people playing video games"
                 height={330}
                 width={512}
@@ -187,7 +193,9 @@ export default function LandingPage() {
             </div>
             <div>
               <Image
-                src={"/../public/images/image5.jpg"}
+                src={
+                  "https://images.pexels.com/photos/4842490/pexels-photo-4842490.jpeg?auto=compress&cs=tinysrgb&w=600"
+                }
                 alt="Image of people playing video games"
                 height={330}
                 width={512}

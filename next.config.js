@@ -11,6 +11,7 @@ const nextConfig = {
       "cf-images.dustin.eu",
       "cdn1.epicgames.com",
       "images.pexels.com",
+      "bitsbots.vercel.app",
     ],
   },
 };
