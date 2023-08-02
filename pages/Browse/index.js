@@ -126,11 +126,11 @@ export default function Browse({ games }) {
                             />
                           </Link>
                           <div className={styles.game_info}>
-                            <Link href={"/Browse/" + game.id}>
+                            <Link href={"/Browse/" + game.id} key={game.id}>
                               <h2>{game.attributes.Title}</h2>
                             </Link>
                             <div className={styles.game_actions}>
-                              <Link href={"/Browse/" + game.id}>
+                              <Link href={"/Browse/" + game.id} key={game.id}>
                                 <span>Details</span>
                               </Link>
 

@@ -25,7 +25,7 @@ export const getStaticPaths = async () => {
 
     paths = games.map((game) => {
       return {
-        params: { id: game.id },
+        params: { id: game.id.toString() },
       };
     });
   } catch (error) {
@@ -56,7 +56,7 @@ export const getStaticProps = async (context) => {
   };
 };
 
-export default function Browse({ game }) {
+export default function Details({ game }) {
   const [isInCart, setIsInCart] = useState(false);
 
   const toggleGameToLocalStorage = (id, Title, image_url, Price) => {
