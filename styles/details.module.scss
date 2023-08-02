@@ -4,54 +4,54 @@
     width: 100%;
 
     main {
-        width: 95%;
+        display: flex;
+        column-gap: 5rem;
+        width: 94%;
         margin: auto;
+        margin-top: 2rem;
 
-        h1 {
-            font-size: 2.5rem;
-            font-family: $secondary-font;
-            letter-spacing: 0.3px;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            margin-left: 6rem;
-        }
-
+        
         .details_content {
             display: flex;
-            justify-content: space-around;
-            align-items: center;
-
-            .details_info {
-                display: flex;
-                flex-direction: column;
-                row-gap: 0.5rem;
+            flex-direction: column;
+            row-gap: 1.7rem;
+            
+            h1 {
+                margin: 0;
+                font-size: 2.5rem;
+                font-family: $secondary-font;
+                letter-spacing: 0.3px;
+                font-weight: 700;
+            }
 
                 p {
+                    font-size: 0.9rem;
                     font-weight: 500;
-                    width: 48rem;
-                    letter-spacing: 0.2px;
+                    width: 87%;
+                    letter-spacing: 0.3px;
+                    line-height: 1.82rem;
+                    line-break: auto;
                     text-align: justify;
+                    margin: 0;
                 }
 
                 h2 {
                     font-weight: 600;
                     color: $primary_color;
-                    font-size: 2rem
+                    font-size: 1.4rem;
+                    margin: 0;
                 }
 
                 button {
                     @include button_style;
                     width: 10rem;
-                    align-self: flex-end;
                     height: 3.8rem;
                 }
 
                 button:hover {
                     @include button_hover;
                 }
-            }
-
-
+            
 
         }
     }
@@ -59,8 +59,46 @@
 
 /* ----------------------------------------------------- Tablet -------------------------------------------- */
 @media (max-width: 1112px) {
-    
+    .details_container {
+
+        main {
+            row-gap: 3rem;
+            flex-direction: column;
+
+            img {
+                height: 30rem !important;
+                width: fit-content;
+            }
+
+            .details_content {
+                
+                p {
+                    width: 100%;
+                }
+            }
+        }
+    }
 }
 
 /* ----------------------------------------------------- Mobile -------------------------------------------- */
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+    .details_container {
+
+        main {
+            width: 93% !important;
+            row-gap: 2rem;
+
+            img {
+                height: auto;
+                width: 100%;
+            }
+
+            .details_content {
+
+                button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

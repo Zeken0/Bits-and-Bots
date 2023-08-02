@@ -151,7 +151,9 @@
 @media (max-width: 767px) {
 
     .cart_container {
+        
         main {
+            height: fit-content !important;
             width: 93% !important;
 
             h1 {

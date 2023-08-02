@@ -6,13 +6,8 @@
 @import "cart.module.scss";
 @import "checkout.module.scss";
 
-.main_landingPage {
-  display: flex;
-  flex-direction: column;
-  row-gap: 2rem;
-  height: 100vh;
-  width: 100%;
-  
+.LandingPage_container {
+  min-height: 100vh;
 
   .text_danger {
     color: red;
@@ -20,86 +15,101 @@
     font-weight: 500;
   } 
 
-  .user_form {
+  main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: $base-index;
-    position: relative;
+    row-gap: 2rem;
+    height: 100%;
 
-
-  .loginForm {
-    width: 17.2rem;
-    display: flex;
+    .user_form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: $base-index;
+      position: relative;
   
-    flex-direction: column;
-    row-gap: 1.5rem;
-
-    div {
+  
+    .loginForm {
+      width: 17.2rem;
+      display: flex;
+    
+      flex-direction: column;
+      row-gap: 1.5rem;
+  
+      div {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+  
+        input {
+          @include input-style;
+        }
+  
+        input:focus {
+          @include input-focused;
+        }
+  
+        label {
+          @include input-label;
+        }
+      }
+  
+      button {
+        @include button-style;
+        align-self: flex-end;
+      }
+  
+      button:hover {
+        @include button-hover;
+      }
+    }
+  
+    .registerForm {
+      width: 17.2rem;
       display: flex;
       flex-direction: column;
-      row-gap: 0.5rem;
-
-      input {
-        @include input-style;
+      row-gap: 1.5rem;
+  
+      div {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+  
+        input {
+          @include input-style;
+        }
+  
+        input:focus {
+          @include input-focused;
+        }
+  
+        label {
+          @include input-label;
+        }
       }
-
-      input:focus {
-        @include input-focused;
+  
+      button {
+        @include button-style;
+        align-self: flex-end;
       }
-
-      label {
-        @include input-label;
-      }
-    }
-
-    button {
-      @include button-style;
-      align-self: flex-end;
-    }
-
-    button:hover {
-      @include button-hover;
-    }
-  }
-
-  .registerForm {
-    width: 17.2rem;
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.5rem;
-
-    div {
-      display: flex;
-      flex-direction: column;
-      row-gap: 0.5rem;
-
-      input {
-        @include input-style;
-      }
-
-      input:focus {
-        @include input-focused;
-      }
-
-      label {
-        @include input-label;
+  
+      button:hover {
+        @include button-hover
       }
     }
-
-    button {
-      @include button-style;
-      align-self: flex-end;
     }
 
-    button:hover {
-      @include button-hover
+    .slider {
+      width: 96.5%;
+      margin: auto;
+      div {
+        img {
+          height: auto;
+          width: 99.8%;
+        }
+      }
     }
-  }
-  }
-
-  .slider_container {
     
   }
 
@@ -107,7 +117,12 @@
 
 /* ----------------------------------------------------- Tablet -------------------------------------------- */
 @media (max-width: 1112px) {
-    
+    .LandingPage_container {
+
+      main {
+        width: 100% !important;
+      }
+    }
 }
 
 /* ----------------------------------------------------- Mobile -------------------------------------------- */

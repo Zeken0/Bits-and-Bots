@@ -119,6 +119,27 @@
 
     .game_container {
         width: 21.8rem !important;
+
+        img {
+            height: 10rem !important;
+            width: auto !important;
+        }
+
+        .game_info {
+
+            h2 {
+                font-size: 1.2rem !important;
+            }
+
+            .game_actions {
+                font-size: 0.9rem !important;
+            }
+
+            button {
+                padding: 1rem !important;
+                width: 65% !important;
+            }
+        }
     }
 
     .game_actions {
@@ -134,19 +155,24 @@
     .browse_container {
 
         main {
-            width: 100% !important;
+            width: 93% !important;
         }
     }
 
 
     .browse_actions {
-        padding: 0 0.7rem;
+        width: 100% !important;
+        align-items: unset !important;
+        display: flex;
+        flex-direction: column;
+        
 
         h1 {
-            font-size: 2rem !important;
+            font-size: 1.7rem !important;
         }
 
         button {
+            width: 100% !important;
             font-size: 0.9rem !important;
             padding: 0.7rem !important;
         }
@@ -155,6 +181,26 @@
     .game_container {
         width: 100% !important;
         padding: 1rem 0.7rem !important;
+
+        img {
+            height: 8rem !important;
+            width: auto !important;
+        }
+
+        .game_info {
+
+            h2 {
+                font-size: 1.1rem !important;
+            }
+
+            .game_actions {
+                font-size: 0.9rem !important;
+            }
+
+            button {
+                width: 60% !important;
+            }
+        }
     }
 
     .game_actions {

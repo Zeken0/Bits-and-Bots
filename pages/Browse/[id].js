@@ -104,32 +104,31 @@ export default function Detail({ game }) {
       <Navbar />
       <div className={styles.details_container}>
         <main>
-          <h1>{game.data.attributes.Title}</h1>
+          <Image
+            src={game.data.attributes.image_url}
+            height={400}
+            width={300}
+            alt="Picture of a game cover"
+            priority
+          />
           <div className={styles.details_content}>
-            <Image
-              src={game.data.attributes.image_url}
-              height={400}
-              width={300}
-              alt="Picture of a game cover"
-              priority
-            />
-            <div className={styles.details_info}>
-              <p>{game.data.attributes.Details}</p>
-              <h2>${game.data.attributes.Price}.00</h2>
+            <h1>{game.data.attributes.Title}</h1>
+            <h2>${game.data.attributes.Price}.00</h2>
+            <p>{game.data.attributes.Details}</p>
 
-              <button
-                onClick={() => {
-                  toggleGameToLocalStorage(
-                    game.data.id,
-                    game.data.attributes.Title,
-                    game.data.attributes.image_url,
-                    game.data.attributes.Price
-                  );
-                }}
-              >
-                {gameInStorage ? <>Added To Cart</> : <>Add To Cart</>}
-              </button>
-            </div>
+            <button
+              onClick={() => {
+                toggleGameToLocalStorage(
+                  game.data.id,
+                  game.data.attributes.Title,
+                  game.data.attributes.image_url,
+                  game.data.attributes.Price
+                );
+              }}
+            >
+              {gameInStorage ? <>Added To Cart</> : <>Add To Cart</>}
+            </button>
+            <div className={styles.details_info}></div>
           </div>
         </main>
       </div>
