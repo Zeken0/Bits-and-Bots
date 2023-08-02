@@ -56,7 +56,7 @@ export const getStaticProps = async (context) => {
   };
 };
 
-export default function Detail({ game }) {
+export default function Browse({ game }) {
   const [isInCart, setIsInCart] = useState(false);
 
   const toggleGameToLocalStorage = (id, Title, image_url, Price) => {

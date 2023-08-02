@@ -150,7 +150,7 @@ export default function LandingPage() {
             <div>
               <Image
                 src={"/../public/images/image1.jpg"}
-                alt=""
+                alt="Image of people playing video games"
                 height={330}
                 width={512}
                 priority
@@ -159,7 +159,7 @@ export default function LandingPage() {
             <div>
               <Image
                 src={"/../public/images/image2.jpg"}
-                alt=""
+                alt="Image of people playing video games"
                 height={330}
                 width={512}
                 priority
@@ -168,7 +168,7 @@ export default function LandingPage() {
             <div>
               <Image
                 src={"/../public/images/image3.jpg"}
-                alt=""
+                alt="Image of people playing video games"
                 height={330}
                 width={512}
                 priority
@@ -177,7 +177,7 @@ export default function LandingPage() {
             <div>
               <Image
                 src={"/../public/images/image4.jpg"}
-                alt=""
+                alt="Image of people playing video games"
                 height={330}
                 width={512}
                 priority
@@ -186,7 +186,7 @@ export default function LandingPage() {
             <div>
               <Image
                 src={"/../public/images/image5.jpg"}
-                alt=""
+                alt="Image of people playing video games"
                 height={330}
                 width={512}
                 priority
