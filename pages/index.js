@@ -45,14 +45,6 @@ export default function LandingPage() {
     password: values.register_password,
   };
 
-  const slides = [
-    { imageUrl: "/../public/images/image1.jpg" },
-    { imageUrl: "/../public/images/image2.jpg" },
-    { imageUrl: "/../public/images/image3.jpg" },
-    { imageUrl: "/../public/images/image4.jpg" },
-    { imageUrl: "/../public/images/image5.jpg" },
-  ];
-
   var settings = {
     dots: true,
     infinite: true,
