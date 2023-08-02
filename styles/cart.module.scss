@@ -2,7 +2,6 @@
     padding: 1rem 0;
     min-height: 90vh;
     width: 100%;
-    
 
     main {
         width: 95%;
@@ -46,7 +45,6 @@
                 display:  flex;
                 align-items: center;
                 font-weight: 500;
-                border-top: 1.5px solid rgba(100, 100, 100, 0.1); 
                 border-bottom: 1.5px solid rgba(100, 100, 100, 0.1);
                 padding: 1rem 0;
 
@@ -150,4 +148,78 @@
 }
 
 /* ----------------------------------------------------- Mobile -------------------------------------------- */
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+
+    .cart_container {
+        main {
+            width: 93% !important;
+
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            .cart_info {
+
+                .cart_info_left {
+                    width: 60%;
+                }
+    
+                .cart_info_mid {
+                    width: 20%;
+                }
+                .cart_info_right {
+                    width: 20%;
+                }
+
+            }
+            .cart_item {
+
+                .cart_item_left {
+                    column-gap: 5% !important;
+
+                    .cart_item_image {
+                        height: 7rem !important;
+                        width: auto !important;
+                    }
+    
+                    .cart_item_title {
+                        font-size: 1rem !important;
+                        font-weight: 500;
+                    }
+
+                    .cart_item_icon {
+                        height: 0.7rem !important;
+                    }
+                }
+
+                .cart_item_mid {
+                    
+                    input {
+                        width: 1.05rem !important;
+                    }
+                }
+
+                .cart_item_right {
+                    font-size: 1rem !important;
+                }
+            }
+
+            .cart_actions {
+                align-items: unset;
+
+                div:nth-of-type(1) {
+                    align-self: flex-end !important;
+
+                    .cart_total {
+                        font-size: 1.15rem !important;
+                    }
+                }
+
+                button {
+                    align-self: center !important;
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+}

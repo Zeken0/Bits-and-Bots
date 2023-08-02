@@ -12,7 +12,6 @@
     }
 
     main {
-        
         align-items: center;
         width: 95%;
         height: 100%;
@@ -26,7 +25,7 @@
             margin-bottom: 3rem;
         }
 
-        div:nth-of-type(1) {
+        .checkout_content {
             display: flex;
         }
 
@@ -85,7 +84,6 @@
                 justify-content: space-between;
                 padding: 0.5rem;
                 border-bottom:  1.5px solid rgba(100, 100, 100, 0.25);
-                border-right:  1.5px solid rgba(100, 100, 100, 0.25);
 
                 h3 {
                     font-size: 1.3rem;
@@ -117,8 +115,95 @@
 
 /* ----------------------------------------------------- Tablet -------------------------------------------- */
 @media (max-width: 1112px) {
-    
+    .checkout_container {
+
+        main {
+            
+            .checkout_content {
+                column-gap: 2.5rem;
+
+                .checkout_form {
+                    width: 40%;
+                }
+
+                .checkout_items {
+                    width: 55%;
+
+                    h2 {
+                        font-size: 1.3rem;
+                    }
+
+                    .checkout_item {
+                        img {
+                            height: 9rem !important;
+                            width: auto !important;
+                        }
+
+                        h3,h4 {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 /* ----------------------------------------------------- Mobile -------------------------------------------- */
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+
+    .checkout_container {
+
+        main {
+            width: 93% !important;
+
+            h1 {
+                font-size: 1.7rem !important;
+            }
+
+            .checkout_content {
+                flex-direction: column !important;
+                row-gap: 3rem;
+
+                .checkout_form {
+                    width: 100% !important;
+                    justify-content: center !important;
+
+                    form {
+                        input, button {
+                            width: 100%;
+                        }
+
+                        button {
+                            margin-top: 1rem;
+                        }
+                    }
+                }
+
+                .checkout_items {
+                    width: 100% !important;
+
+                    h2 {
+                        font-size: 1.2rem;
+                    }
+
+                    .checkout_item {
+                        img {
+                            height: 7.5rem !important;
+                            width: auto !important;
+                        }
+
+                        h3 {
+                            font-size: 1rem;
+                        }
+
+                        h4 {
+                            font-size: 1rem;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

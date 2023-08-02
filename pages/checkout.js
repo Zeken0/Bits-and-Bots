@@ -72,7 +72,7 @@ export default function Checkout() {
       <div className={styles.checkout_container}>
         <main>
           <h1>Checkout</h1>
-          <div>
+          <div className={styles.checkout_content}>
             <div className={styles.checkout_form}>
               <form onSubmit={handleSubmit}>
                 <div>
@@ -133,6 +133,7 @@ export default function Checkout() {
                         src={item.Image}
                         height={240}
                         width={145}
+                        priority
                       />
                     </Link>
 

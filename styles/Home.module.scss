@@ -111,4 +111,12 @@
 }
 
 /* ----------------------------------------------------- Mobile -------------------------------------------- */
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+  
+  .user_form {
+    h1 {
+      text-align: center;
+      padding: 1rem;
+    }
+  }
+}
