@@ -10,6 +10,7 @@ const nextConfig = {
       "cdn.cdkeys.com",
       "cf-images.dustin.eu",
       "cdn1.epicgames.com",
+      "images.pexels.com",
     ],
   },
 };

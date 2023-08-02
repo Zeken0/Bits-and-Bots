@@ -158,7 +158,9 @@ export default function LandingPage() {
             </div>
             <div>
               <Image
-                src={"/../public/images/image2.jpg"}
+                src={
+                  "https://images.pexels.com/photos/7360388/pexels-photo-7360388.jpeg?auto=compress&cs=tinysrgb&w=600"
+                }
                 alt="Image of people playing video games"
                 height={330}
                 width={512}
