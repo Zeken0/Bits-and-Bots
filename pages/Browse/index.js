@@ -116,7 +116,7 @@ export default function Browse({ games }) {
 
                       return (
                         <div className={styles.game_container} key={game.id}>
-                          <Link href={"/Browse/" + game.id} key={game.id}>
+                          <Link href={"/browse/" + game.id}>
                             <Image
                               src={game.attributes.image_url}
                               height={210}
@@ -126,11 +126,11 @@ export default function Browse({ games }) {
                             />
                           </Link>
                           <div className={styles.game_info}>
-                            <Link href={"/Browse/" + game.id} key={game.id}>
+                            <Link href={"/browse/" + game.id}>
                               <h2>{game.attributes.Title}</h2>
                             </Link>
                             <div className={styles.game_actions}>
-                              <Link href={"/Browse/" + game.id} key={game.id}>
+                              <Link href={"/browse/" + game.id}>
                                 <span>Details</span>
                               </Link>
 
@@ -174,7 +174,7 @@ export default function Browse({ games }) {
                       if (game.attributes.Genre === "RPG") {
                         return (
                           <div className={styles.game_container} key={game.id}>
-                            <Link href={"/Browse/" + game.id}>
+                            <Link href={"/browse/" + game.id}>
                               <Image
                                 src={game.attributes.image_url}
                                 height={200}
@@ -184,11 +184,11 @@ export default function Browse({ games }) {
                               />
                             </Link>
                             <div className={styles.game_info}>
-                              <Link href={"/Browse/" + game.id}>
+                              <Link href={"/browse/" + game.id}>
                                 <h2>{game.attributes.Title}</h2>
                               </Link>
                               <div className={styles.game_actions}>
-                                <Link href={"/Browse/" + game.id}>
+                                <Link href={"/browse/" + game.id}>
                                   <span>Details</span>
                                 </Link>
                                 <button
@@ -232,7 +232,7 @@ export default function Browse({ games }) {
                       if (game.attributes.Genre === "Action") {
                         return (
                           <div className={styles.game_container} key={game.id}>
-                            <Link href={"/Browse/" + game.id}>
+                            <Link href={"/browse/" + game.id}>
                               <Image
                                 src={game.attributes.image_url}
                                 height={200}
@@ -242,11 +242,11 @@ export default function Browse({ games }) {
                               />
                             </Link>
                             <div className={styles.game_info}>
-                              <Link href={"/Browse/" + game.id}>
+                              <Link href={"/Bbrowse/" + game.id}>
                                 <h2>{game.attributes.Title}</h2>
                               </Link>
                               <div className={styles.game_actions}>
-                                <Link href={"/Browse/" + game.id}>
+                                <Link href={"/browse/" + game.id}>
                                   <span>Details</span>
                                 </Link>
                                 <button
@@ -290,7 +290,7 @@ export default function Browse({ games }) {
                       if (game.attributes.Genre === "Shooter") {
                         return (
                           <div className={styles.game_container} key={game.id}>
-                            <Link href={"/Browse/" + game.id}>
+                            <Link href={"/browse/" + game.id}>
                               <Image
                                 src={game.attributes.image_url}
                                 height={200}
@@ -300,11 +300,11 @@ export default function Browse({ games }) {
                               />
                             </Link>
                             <div className={styles.game_info}>
-                              <Link href={"/Browse/" + game.id}>
+                              <Link href={"/browse/" + game.id}>
                                 <h2>{game.attributes.Title}</h2>
                               </Link>
                               <div className={styles.game_actions}>
-                                <Link href={"/Browse/" + game.id}>
+                                <Link href={"/browse/" + game.id}>
                                   <span>Details</span>
                                 </Link>
                                 <button
@@ -348,7 +348,7 @@ export default function Browse({ games }) {
                       if (game.attributes.Genre === "Racing") {
                         return (
                           <div className={styles.game_container} key={game.id}>
-                            <Link href={"/Browse/" + game.id}>
+                            <Link href={"/browse/" + game.id}>
                               <Image
                                 src={game.attributes.image_url}
                                 height={200}
@@ -358,11 +358,11 @@ export default function Browse({ games }) {
                               />
                             </Link>
                             <div className={styles.game_info}>
-                              <Link href={"/Browse/" + game.id}>
+                              <Link href={"/browse/" + game.id}>
                                 <h2>{game.attributes.Title}</h2>
                               </Link>
                               <div className={styles.game_actions}>
-                                <Link href={"/Browse/" + game.id}>
+                                <Link href={"/browse/" + game.id}>
                                   <span>Details</span>
                                 </Link>
                                 <button

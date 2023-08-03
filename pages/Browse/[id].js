@@ -33,7 +33,7 @@ export const getStaticPaths = async () => {
   }
 
   return {
-    paths: paths,
+    paths,
     fallback: false,
   };
 };
@@ -87,7 +87,7 @@ export default function Details({ game }) {
   };
 
   const gameInStorage = getFromLocalStorage("cart").find((item) => {
-    return item.Id === game.data.id;
+    return item.Id === game.id;
   });
 
   return (
