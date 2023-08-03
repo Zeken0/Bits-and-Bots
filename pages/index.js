@@ -95,7 +95,7 @@ export default function LandingPage() {
       <div className={styles.LandingPage_container}>
         <main>
           <div className={styles.user_form}>
-            <h1>Welcome To Bits & bots</h1>
+            <h1>Welcome To Bits & Bots</h1>
 
             <Tabs color="orange" radius="xs" defaultValue="login">
               <Tabs.List grow>
