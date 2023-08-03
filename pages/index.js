@@ -51,6 +51,8 @@ export default function LandingPage() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    autoPlay: true,
+    autoplaySpeed: 2000,
     draggable: true,
     responsive: [
       {

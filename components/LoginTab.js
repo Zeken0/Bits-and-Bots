@@ -36,7 +36,7 @@ export default function LoginTab() {
         values.login_email === localStorageData.email &&
         values.login_password === localStorageData.password
       ) {
-        router.push("/browse");
+        router.push("/Browse");
         alert("Login successful, Rederacting to the browse page!");
         resetForm();
       } else {
