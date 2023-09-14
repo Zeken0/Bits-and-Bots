@@ -1,9 +1,5 @@
 # Bits&bots
 
-## Description
-
-This is my answer to the project exam 2
-
 ## Built With
 
 - React/Next.js
@@ -13,6 +9,7 @@ This is my answer to the project exam 2
 - Vercel
 - Strapi
 - Heroku
+- Render
 
 ## Getting Started
 
