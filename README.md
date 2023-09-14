@@ -16,7 +16,7 @@
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/Zeken0/project-exam-2
+git clone https://github.com/Zeken0/Bits-and-Bots
 ```
 
 2. Install dependencies:
